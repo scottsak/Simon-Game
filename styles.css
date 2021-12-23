@@ -1,0 +1,32 @@
+body{
+  background-color: #587b7f;
+}
+
+.red {
+  background-color: red;
+}
+
+.green{
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.container{
+  text-align: center;
+}
+
+.button{
+  height: 300px;
+  width: 300px;
+  margin: 25px;
+  border-radius: 25px;
+  display: inline-block;
+  border: 1rem solid black;
+}
