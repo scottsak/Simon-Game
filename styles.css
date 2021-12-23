@@ -2,19 +2,19 @@ body{
   background-color: #587b7f;
 }
 
-.red {
+#red {
   background-color: red;
 }
 
-.green{
+#green{
   background-color: green;
 }
 
-.blue {
+#blue {
   background-color: blue;
 }
 
-.yellow {
+#yellow {
   background-color: yellow;
 }
 
