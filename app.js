@@ -42,12 +42,12 @@ function getNextNum(nextColor){
 
       break;
     case 3:
-      colorSequence.push("yellow")
+      colorSequence.push("yellow");
       // document.getElementById("yellow").style.backgroundColor = "purple";
       // setTimeout(() => {  document.getElementById("yellow").style.backgroundColor = "yellow"; }, 2000);
       break;
   }
-}
+};
 
 function startGame() {
   console.log(colorSequence);
@@ -71,4 +71,4 @@ function startGame() {
       break;
     }
   }
-}
+};
