@@ -25,6 +25,15 @@ function nextSequence() {
   return Math.floor(Math.random() * 4);
 };
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 function getNextNum(nextColor){
   switch (nextColor) {
     case 0:
@@ -50,24 +59,26 @@ function getNextNum(nextColor){
 };
 
 function startGame() {
-  console.log(colorSequence);
   colorSequence = [];
-  console.log(colorSequence);
   userInput = [];
   correct=true;
   while (correct === true) {
     getNextNum(nextSequence());
-    colorSequence.forEach(function (item, index) {
-      document.getElementById(item).style.backgroundColor = "purple";
-      setTimeout(() => {  document.getElementById(item).style.backgroundColor = item; }, 2000);
-    });
-    setTimeout(() => {  console.log("pause"); }, 4000);
+    for(let i=0; i<colorSequence.length; i++){
+      document.getElementById(colorSequence[i]).style.backgroundColor = "purple";
+      console.log("start");
+      sleep(3000);
+      console.log("end");
+      document.getElementById(colorSequence[i]).style.backgroundColor = colorSequence[i];
+    };
+    sleep(4000);
     console.log("pause over");
     if (userInput === colorSequence) {
       // alert("you got it right");
     } else {
       // alert("You got it wrong");
       correct=false;
+      console.log("game ended");
       break;
     }
   }
