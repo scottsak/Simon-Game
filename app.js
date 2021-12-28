@@ -34,26 +34,50 @@ function sleep(milliseconds) {
   }
 }
 
-function getNextNum(nextColor){
+//gets the next color for sequence
+function getNextColor(nextColor){
   switch (nextColor) {
     case 0:
       colorSequence.push("red");
-      // document.getElementById("red").style.backgroundColor = "purple";
-      // setTimeout(() => {  document.getElementById("red").style.backgroundColor = "red"; }, 20000);
       break;
     case 1:
       colorSequence.push("green");
-      // document.getElementById("green").style.backgroundColor = "purple";
-      // setTimeout(() => {  document.getElementById("green").style.backgroundColor = "green"; }, 2000);
       break;
     case 2:
       colorSequence.push("blue");
-
       break;
     case 3:
       colorSequence.push("yellow");
-      // document.getElementById("yellow").style.backgroundColor = "purple";
-      // setTimeout(() => {  document.getElementById("yellow").style.backgroundColor = "yellow"; }, 2000);
+      break;
+  }
+};
+
+//lights up buttons
+function lightButton(buttonColor){
+  switch (buttonColor) {
+    case 0:
+      console.log("red");
+      document.getElementById("red").style.backgroundColor = "purple";
+      sleep(2000);
+      //document.getElementById("red").style.backgroundColor = "red";
+      break;
+    case 1:
+      console.log("green");
+      document.getElementById("green").style.backgroundColor = "purple";
+      sleep(2000);
+      //document.getElementById("green").style.backgroundColor = "green";
+      break;
+    case 2:
+      console.log("blue");
+      document.getElementById("blue").style.backgroundColor = "purple";
+      sleep(5000);
+      //document.getElementById("blue").style.backgroundColor = "blue";
+      break;
+    case 3:
+      console.log("yellow");
+      document.getElementById("yellow").style.backgroundColor = "purple";
+      sleep(2000);
+      //document.getElementById("yellow").style.backgroundColor = "yellow";
       break;
   }
 };
@@ -63,13 +87,15 @@ function startGame() {
   userInput = [];
   correct=true;
   while (correct === true) {
-    getNextNum(nextSequence());
+    getNextColor(nextSequence());
+    console.log(colorSequence);
     for(let i=0; i<colorSequence.length; i++){
-      document.getElementById(colorSequence[i]).style.backgroundColor = "purple";
+      let buttonColor = (colorSelection.indexOf(colorSequence[i]));
+      lightButton(buttonColor);
+      console.log(buttonColor);
       console.log("start");
       sleep(3000);
       console.log("end");
-      document.getElementById(colorSequence[i]).style.backgroundColor = colorSequence[i];
     };
     sleep(4000);
     console.log("pause over");
