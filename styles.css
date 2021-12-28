@@ -2,29 +2,29 @@ body{
   background-color: #587b7f;
 }
 
-#red {
+.red {
   background-color: red;
 }
 
-#green{
+.green{
   background-color: green;
 }
 
-#blue {
+.blue {
   background-color: blue;
 }
 
-#yellow {
+.yellow {
   background-color: yellow;
 }
 
-.box{
-  height:300px;
-  width:300px;
+.btn {
   margin: 25px;
-  border-radius: 25px;
   display: inline-block;
-  border: 1rem solid black;
+  height: 300px;
+  width: 300px;
+  border: 10px solid black;
+  border-radius: 20%;
 }
 
 .container{
