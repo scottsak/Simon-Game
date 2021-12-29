@@ -1,10 +1,12 @@
 let colorSequence = [];
 let userInput = [];
-const colorSelection = ["red", "green", "blue", "yellow"];
+let level = 0;
 let correct = true;
+const colorSelection = ["red", "green", "blue", "yellow"];
 
 
-
+//-------------------------------------
+//gets user input
 function addRed() {
   userInput.push("red");
 };
@@ -21,24 +23,14 @@ function addGreen() {
   userInput.push("green");
 };
 
-function nextSequence() {
-  return Math.floor(Math.random() * 4);
-};
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
+//-------------------------------------
 
 //gets the next color for sequence
 function getNextColor(nextColor){
   switch (nextColor) {
     case 0:
       colorSequence.push("red");
+      document.
       break;
     case 1:
       colorSequence.push("green");
@@ -51,6 +43,23 @@ function getNextColor(nextColor){
       break;
   }
 };
+
+function nextSequence() {
+  return Math.floor(Math.random() * 4);
+};
+
+//-------------------------------------
+
+//sleep function
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 
 //lights up buttons
 function lightButton(buttonColor){
