@@ -1,4 +1,4 @@
-let colorSequence = [];
+let colorSequence = ["red", "green", "blue"];
 let userInput = [];
 let level = 0;
 let correct = true;
@@ -10,6 +10,8 @@ const colorSelection = ["red", "green", "blue", "yellow"];
 $(document).keypress(function() {
   if (!started) {
     $("#level").text("Level " + level);
+    level++;
+    getNextColor();
     //start game
     showSequence();
     //get colorSequence
@@ -22,11 +24,11 @@ $(document).keypress(function() {
 //-------------------------------------
 
 function showSequence() {
-  level++;
-  getNextColor();
+  console.log(colorSequence.length);
   for(let i=0; i<colorSequence.length; i++){
+    console.log(colorSequence[i]);
     lightUp(colorSelection.indexOf(colorSequence[i]));
-    // sleep(1000);
+    //sleep(500);
   }
 };
 
@@ -49,16 +51,18 @@ $(".btn").click(function(){
 function checkAnswer(){
   console.log(userInput);
   console.log(colorSequence);
-  if(userInput===colorSequence){
-    correct=true;
-  }
-  else{
-    playSound("wrong");
-    $("body").addClass("game-over");
-    $("#level").text("Game Over, Press Any Key to Restart");
-    level = 0;
-    gamePattern = [];
-    started=false;
+  if(userInput.length===colorSequence.length){
+    if(userInput===colorSequence){
+      correct=true;
+    }
+    else{
+      playSound("wrong");
+      $("body").addClass("game-over");
+      $("#level").text("Game Over, Press Any Key to Restart");
+      level = 0;
+      colorSequence = [];
+      started=false;
+    }
   }
 }
 //-------------------------------------
@@ -97,22 +101,26 @@ function sleep(milliseconds) {
 //-------------------------------------
 
 function lightUp(button){
-  switch (nextColor) {
+  switch (button) {
     case 0:
+    console.log("went through r");
       $("#red").fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("0");
       break;
     case 1:
+    console.log("went through g");
       $("#green").fadeIn(100).fadeOut(100).fadeIn(100);
-      playSound("1")
+      playSound("1");
       break;
     case 2:
+    console.log("went through b");
       $("#blue").fadeIn(100).fadeOut(100).fadeIn(100);
-      playSound("3")
+      playSound("3");
       break;
     case 3:
+    console.log("went through y");
       $("#yellow").fadeIn(100).fadeOut(100).fadeIn(100);
-      playSound("4")
+      playSound("4");
       break;
   }
 };
