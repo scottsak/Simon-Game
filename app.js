@@ -107,22 +107,22 @@ function lightUp(button) {
   switch (button) {
     case 0:
       console.log("went through r");
-      $("#red").fadeIn(100).fadeOut(100).fadeIn(100).delay(800);
+      $("#red").delay(800).fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("0");
       break;
     case 1:
       console.log("went through g");
-      $("#green").fadeIn(100).fadeOut(100).fadeIn(100).delay(800);
+      $("#green").delay(800).delay(800).fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("1");
       break;
     case 2:
       console.log("went through b");
-      $("#blue").fadeIn(100).fadeOut(100).fadeIn(100).delay(800);
+      $("#blue").delay(800).fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("3");
       break;
     case 3:
       console.log("went through y");
-      $("#yellow").fadeIn(100).fadeOut(100).fadeIn(100).delay(800);
+      $("#yellow").delay(800).fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("4");
       break;
   }
