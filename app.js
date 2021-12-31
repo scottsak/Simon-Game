@@ -4,19 +4,15 @@ let level = 0;
 let correct = true;
 let started = false;
 let nextColor = 0;
+let count=0;
 const colorSelection = ["red", "green", "blue", "yellow"];
 
 //starts game
 $(document).keypress(function() {
   if (!started) {
     $("#level").text("Level " + level);
-    level++;
     getNextColor();
-    //start game
     showSequence();
-    //get colorSequence
-    //sleep((level*1000)+1000);
-    //see if it matches
     started=true;
   }
 });
@@ -28,7 +24,6 @@ function showSequence() {
   for(let i=0; i<colorSequence.length; i++){
     console.log(colorSequence[i]);
     lightUp(colorSelection.indexOf(colorSequence[i]));
-    //sleep(500);
   }
 };
 
@@ -39,36 +34,45 @@ function showSequence() {
 $(".btn").click(function(){
   let x = $(this).attr("id");
   userInput.push(x);
-
-  //count++
-  //if count = length of level then check checkAnswer
-
   checkAnswer();
 });
 
 //-------------------------------------
 //check if wrong or right
 function checkAnswer(){
+  count++;
   console.log(userInput);
   console.log(colorSequence);
-  if(userInput.length===colorSequence.length){
-    if(userInput===colorSequence){
+  //checks if lengths are the same
+  if(JSON.stringify(userInput.slice(0,count))==JSON.stringify(colorSequence.slice(0,count))){
+    if(userInput.length===colorSequence.length){
       correct=true;
+      count=0;
+      userInput=[];
+      getNextColor();
+      showSequence();
     }
-    else{
-      playSound("wrong");
-      $("body").addClass("game-over");
-      $("#level").text("Game Over, Press Any Key to Restart");
-      level = 0;
-      colorSequence = [];
-      started=false;
-    }
+  }
+  else{
+    playSound("wrong");
+    $("body").addClass("game-over");
+    $("#level").text("Game Over, Press Any Key to Restart");
+    setTimeout(function () {
+      $("body").removeClass("game-over");
+    }, 200);
+    level = 0;
+    colorSequence = [];
+    userInput=[];
+    count=0;
+    started=false;
+
   }
 }
 //-------------------------------------
 //gets the next color for sequence
 function getNextColor(){
   level++;
+  $("#level").text("Level " + level);
   nextColor = Math.floor(Math.random() * 4);
   switch (nextColor) {
     case 0:
@@ -104,22 +108,22 @@ function lightUp(button){
   switch (button) {
     case 0:
     console.log("went through r");
-      $("#red").fadeIn(100).fadeOut(100).fadeIn(100);
+      $("#red").fadeIn(100).fadeOut(100).fadeIn(100).delay(800);
       playSound("0");
       break;
     case 1:
     console.log("went through g");
-      $("#green").fadeIn(100).fadeOut(100).fadeIn(100);
+      $("#green").fadeIn(100).fadeOut(100).fadeIn(100).delay(800);
       playSound("1");
       break;
     case 2:
     console.log("went through b");
-      $("#blue").fadeIn(100).fadeOut(100).fadeIn(100);
+      $("#blue").fadeIn(100).fadeOut(100).fadeIn(100).delay(800);
       playSound("3");
       break;
     case 3:
     console.log("went through y");
-      $("#yellow").fadeIn(100).fadeOut(100).fadeIn(100);
+      $("#yellow").fadeIn(100).fadeOut(100).fadeIn(100).delay(800);
       playSound("4");
       break;
   }
