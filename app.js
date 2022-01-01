@@ -1,4 +1,4 @@
-let colorSequence = ["red", "green", "blue"];
+let colorSequence = [];
 let userInput = [];
 let level = 0;
 let correct = true;
@@ -23,7 +23,7 @@ function showSequence() {
   console.log(colorSequence.length);
   for (let i = 0; i < colorSequence.length; i++) {
     console.log(colorSequence[i]);
-    lightUp(colorSelection.indexOf(colorSequence[i]));
+    lightUp(colorSelection.indexOf(colorSequence[i]), i);
   }
 };
 
@@ -102,27 +102,57 @@ function sleep(milliseconds) {
 }
 
 //-------------------------------------
+// function lightUp(button) {
+//   setTimeout(() =>{
+//     switch (button) {
+//       case 0:
+//         console.log("went through r");
+//         document.querySelector("#red").style.backgroundColor = "purple";
+//         // document.querySelector("#red").style.backgroundColor = "red";
+//         playSound("0");
+//         break;
+//       case 1:
+//         console.log("went through g");
+//         document.querySelector("#green").style.backgroundColor = "purple";
+//         // document.querySelector("#green").style.backgroundColor = "green";
+//         playSound("1");
+//         break;
+//       case 2:
+//         console.log("went through b");
+//         document.querySelector("#blue").style.backgroundColor = "purple";
+//         // document.querySelector("#blue").style.backgroundColor = "blue";
+//         playSound("3");
+//         break;
+//       case 3:
+//         console.log("went through y");
+//         document.querySelector("#yellow").style.backgroundColor = "purple";
+//         // document.querySelector("#yellow").style.backgroundColor = "yellow";
+//         playSound("4");
+//         break;
+//     }
+//   }, 300);
+// };
 
-function lightUp(button) {
+function lightUp(button, i) {
   switch (button) {
     case 0:
       console.log("went through r");
-      $("#red").delay(800).fadeIn(100).fadeOut(100).fadeIn(100);
+      $("#red").delay(i*500).fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("0");
       break;
     case 1:
       console.log("went through g");
-      $("#green").delay(800).delay(800).fadeIn(100).fadeOut(100).fadeIn(100);
+      $("#green").delay(i*500).fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("1");
       break;
     case 2:
       console.log("went through b");
-      $("#blue").delay(800).fadeIn(100).fadeOut(100).fadeIn(100);
+      $("#blue").delay(i*500).fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("3");
       break;
     case 3:
       console.log("went through y");
-      $("#yellow").delay(800).fadeIn(100).fadeOut(100).fadeIn(100);
+      $("#yellow").delay(i*500).fadeIn(100).fadeOut(100).fadeIn(100);
       playSound("4");
       break;
   }
