@@ -3,6 +3,7 @@ let userInput = [];
 let level = 0;
 let correct = true;
 let started = false;
+let lostPage=false;
 let nextColor = 0;
 let count = 0;
 let patternShowing = true;
@@ -10,7 +11,7 @@ const colorSelection = ["red", "green", "blue", "yellow"];
 
 //starts game
 $(document).keypress(function() {
-  if (!started) {
+  if (!started && lostPage===false) {
     $("#level").text("Level " + level);
     getNextColor();
     showSequence();
@@ -37,7 +38,7 @@ function showSequence() {
 //-------------------------------------
 //gets user input
 $(".btn").click(function() {
-  if(patternShowing===false){
+  if(patternShowing===false && lostPage===false && started){
     let x = $(this).attr("id");
     userInput.push(x);
     lightUp(colorSelection.indexOf(x), 0);
@@ -65,10 +66,16 @@ function checkAnswer() {
   } else {
     playSound("wrong");
     $("body").addClass("game-over");
-    $("#level").text("Game Over, Press Any Key to Restart");
+    $("#level").text("You Made It To Level "+level);
+    lostPage=true;
     setTimeout(function() {
       $("body").removeClass("game-over");
     }, 200);
+    setTimeout(function() {
+      $("#level").text("Game Over, Press Any Key to Restart");
+      console.log("print");
+      lostPage=false;
+    }, 3000);
     level = 0;
     colorSequence = [];
     userInput = [];
