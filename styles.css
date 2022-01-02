@@ -1,6 +1,9 @@
 body{
   background-color: #587b7f;
 }
+h2{
+  font-size: 2rem;
+}
 
 .red {
   background-color: #b22222;
