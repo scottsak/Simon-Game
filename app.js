@@ -145,31 +145,6 @@ function restoreColor(){
   document.querySelector("#red").style.backgroundColor = "#b22222";
 }
 
-// function lightUp(button, i) {
-//   switch (button) {
-//     case 0:
-//       console.log("went through r");
-//       $("#red").delay(i*500).fadeIn(100).fadeOut(100).fadeIn(100);
-//       playSound("0");
-//       break;
-//     case 1:
-//       console.log("went through g");
-//       $("#green").delay(i*500).fadeIn(100).fadeOut(100).fadeIn(100);
-//       playSound("1");
-//       break;
-//     case 2:
-//       console.log("went through b");
-//       $("#blue").delay(i*500).fadeIn(100).fadeOut(100).fadeIn(100);
-//       playSound("3");
-//       break;
-//     case 3:
-//       console.log("went through y");
-//       $("#yellow").delay(i*500).fadeIn(100).fadeOut(100).fadeIn(100);
-//       playSound("4");
-//       break;
-//   }
-// };
-
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
