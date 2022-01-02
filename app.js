@@ -22,13 +22,11 @@ $(document).keypress(function() {
 //-------------------------------------
 
 function showSequence() {
-  console.log(colorSequence.length);
   patternShowing=true;
   setTimeout(function() {
     patternShowing=false;
   }, 500*colorSequence.length);
   for (let i = 0; i < colorSequence.length; i++) {
-    console.log(colorSequence[i]);
     lightUp(colorSelection.indexOf(colorSequence[i]), i);
   }
 };
@@ -51,8 +49,6 @@ $(".btn").click(function() {
 //check if wrong or right
 function checkAnswer() {
   count++;
-  console.log(userInput);
-  console.log(colorSequence);
   //checks if lengths are the same
   if (JSON.stringify(userInput.slice(0, count)) == JSON.stringify(colorSequence.slice(0, count))) {
     if (userInput.length === colorSequence.length) {
@@ -72,8 +68,7 @@ function checkAnswer() {
       $("body").removeClass("game-over");
     }, 200);
     setTimeout(function() {
-      $("#level").text("Game Over, Press Any Key to Restart");
-      console.log("print");
+      $("#level").text("Game Over, Press Any Key to Restart"); 
       lostPage=false;
     }, 3000);
     level = 0;
@@ -81,7 +76,6 @@ function checkAnswer() {
     userInput = [];
     count = 0;
     started = false;
-
   }
 }
 //-------------------------------------
@@ -124,25 +118,21 @@ function lightUp(button, i) {
   setTimeout(() =>{
     switch (button) {
       case 0:
-        console.log("went through r");
         document.querySelector("#red").style.backgroundColor = "#FF3131";
         playSound("0");
         setTimeout(() =>{document.querySelector("#red").style.backgroundColor = "#b22222";}, 200);
         break;
       case 1:
-        console.log("went through g");
         document.querySelector("#green").style.backgroundColor = "#7fff00";
         playSound("1");
         setTimeout(() =>{document.querySelector("#green").style.backgroundColor = "green";}, 200);
         break;
       case 2:
-        console.log("went through b");
         document.querySelector("#blue").style.backgroundColor = "#0096FF";
         playSound("3");
         setTimeout(() =>{document.querySelector("#blue").style.backgroundColor = "blue";}, 200);
         break;
       case 3:
-        console.log("went through y");
         document.querySelector("#yellow").style.backgroundColor = "#FAFA33";
         playSound("4");
         setTimeout(() =>{document.querySelector("#yellow").style.backgroundColor = "#FFC000";}, 200);
@@ -152,7 +142,6 @@ function lightUp(button, i) {
 };
 
 function restoreColor(){
-  console.log("kk");
   document.querySelector("#blue").style.backgroundColor = "blue";
   document.querySelector("#yellow").style.backgroundColor = "#FFC000";
   document.querySelector("#green").style.backgroundColor = "green";
