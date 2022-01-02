@@ -5,6 +5,7 @@ let correct = true;
 let started = false;
 let nextColor = 0;
 let count = 0;
+let patternShowing = true;
 const colorSelection = ["red", "green", "blue", "yellow"];
 
 //starts game
@@ -21,6 +22,10 @@ $(document).keypress(function() {
 
 function showSequence() {
   console.log(colorSequence.length);
+  patternShowing=true;
+  setTimeout(function() {
+    patternShowing=false;
+  }, 500*colorSequence.length);
   for (let i = 0; i < colorSequence.length; i++) {
     console.log(colorSequence[i]);
     lightUp(colorSelection.indexOf(colorSequence[i]), i);
@@ -32,10 +37,12 @@ function showSequence() {
 //-------------------------------------
 //gets user input
 $(".btn").click(function() {
-  let x = $(this).attr("id");
-  userInput.push(x);
-  lightUp(colorSelection.indexOf(x), 0);
-  checkAnswer();
+  if(patternShowing===false){
+    let x = $(this).attr("id");
+    userInput.push(x);
+    lightUp(colorSelection.indexOf(x), 0);
+    checkAnswer();
+  }
 });
 
 
