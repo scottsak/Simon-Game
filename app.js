@@ -24,7 +24,6 @@ function showSequence() {
   for (let i = 0; i < colorSequence.length; i++) {
     console.log(colorSequence[i]);
     lightUp(colorSelection.indexOf(colorSequence[i]), i);
-
   }
 };
 
@@ -35,16 +34,10 @@ function showSequence() {
 $(".btn").click(function() {
   let x = $(this).attr("id");
   userInput.push(x);
-  animatePress(x);
+  lightUp(colorSelection.indexOf(x), 0);
   checkAnswer();
 });
 
-function animatePress(currentColor) {
-  $("#" + currentColor).addClass("pressed");
-  setTimeout(function () {
-    $("#" + currentColor).removeClass("pressed");
-  }, 100);
-}
 
 //-------------------------------------
 //check if wrong or right
@@ -59,7 +52,8 @@ function checkAnswer() {
       count = 0;
       userInput = [];
       getNextColor();
-      showSequence();
+      setTimeout(() =>{
+      showSequence();}, 800);
     }
   } else {
     playSound("wrong");
