@@ -3,7 +3,7 @@ body{
 }
 
 .red {
-  background-color: red;
+  background-color: #b22222;
 }
 
 .green{
@@ -15,7 +15,7 @@ body{
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #FFC000;
 }
 
 .game-over {
@@ -34,4 +34,9 @@ body{
 
 .container{
   text-align: center;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
 }

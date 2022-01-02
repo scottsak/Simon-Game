@@ -23,7 +23,6 @@ function showSequence() {
   console.log(colorSequence.length);
   for (let i = 0; i < colorSequence.length; i++) {
     console.log(colorSequence[i]);
-
     lightUp(colorSelection.indexOf(colorSequence[i]), i);
 
   }
@@ -36,8 +35,16 @@ function showSequence() {
 $(".btn").click(function() {
   let x = $(this).attr("id");
   userInput.push(x);
+  animatePress(x);
   checkAnswer();
 });
+
+function animatePress(currentColor) {
+  $("#" + currentColor).addClass("pressed");
+  setTimeout(function () {
+    $("#" + currentColor).removeClass("pressed");
+  }, 100);
+}
 
 //-------------------------------------
 //check if wrong or right
@@ -110,27 +117,27 @@ function lightUp(button, i) {
     switch (button) {
       case 0:
         console.log("went through r");
-        document.querySelector("#red").style.backgroundColor = "purple";
-        // document.querySelector("#red").style.backgroundColor = "red";
+        document.querySelector("#red").style.backgroundColor = "#FF3131";
         playSound("0");
+        setTimeout(() =>{document.querySelector("#red").style.backgroundColor = "#b22222";}, 200);
         break;
       case 1:
         console.log("went through g");
-        document.querySelector("#green").style.backgroundColor = "purple";
-        //document.querySelector("#green").style.backgroundColor = "green";
+        document.querySelector("#green").style.backgroundColor = "#7fff00";
         playSound("1");
+        setTimeout(() =>{document.querySelector("#green").style.backgroundColor = "green";}, 200);
         break;
       case 2:
         console.log("went through b");
-        document.querySelector("#blue").style.backgroundColor = "purple";
-        // document.querySelector("#blue").style.backgroundColor = "blue";
+        document.querySelector("#blue").style.backgroundColor = "#0096FF";
         playSound("3");
+        setTimeout(() =>{document.querySelector("#blue").style.backgroundColor = "blue";}, 200);
         break;
       case 3:
         console.log("went through y");
-        document.querySelector("#yellow").style.backgroundColor = "purple";
-        // document.querySelector("#yellow").style.backgroundColor = "yellow";
+        document.querySelector("#yellow").style.backgroundColor = "#FAFA33";
         playSound("4");
+        setTimeout(() =>{document.querySelector("#yellow").style.backgroundColor = "#FFC000";}, 200);
         break;
     }
   }, i*500);
@@ -139,9 +146,9 @@ function lightUp(button, i) {
 function restoreColor(){
   console.log("kk");
   document.querySelector("#blue").style.backgroundColor = "blue";
-  document.querySelector("#yellow").style.backgroundColor = "yellow";
+  document.querySelector("#yellow").style.backgroundColor = "#FFC000";
   document.querySelector("#green").style.backgroundColor = "green";
-  document.querySelector("#red").style.backgroundColor = "red";
+  document.querySelector("#red").style.backgroundColor = "#b22222";
 }
 
 // function lightUp(button, i) {
