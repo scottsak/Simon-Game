@@ -91,7 +91,7 @@ function checkAnswer() {
 //gets the next color for sequence
 function getNextColor() {
   level++;
-  $("#level").text("Level " + level);
+  $(".level").text("Level " + level);
   nextColor = Math.floor(Math.random() * 4);
   switch (nextColor) {
     case 0:
