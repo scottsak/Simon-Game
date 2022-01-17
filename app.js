@@ -12,7 +12,16 @@ const colorSelection = ["red", "green", "blue", "yellow"];
 //starts game
 $(document).keypress(function() {
   if (!started && lostPage===false) {
-    $("#level").text("Level " + level);
+    $(".level").text("Level " + level);
+    getNextColor();
+    showSequence();
+    started = true;
+  }
+});
+
+$("#startPhone").click(function() {
+  if (!started && lostPage===false) {
+    $(".level").text("Level " + level);
     getNextColor();
     showSequence();
     started = true;
@@ -62,13 +71,13 @@ function checkAnswer() {
   } else {
     playSound("wrong");
     $("body").addClass("game-over");
-    $("#level").text("You Made It To Level "+level);
+    $(".level").text("You Made It To Level "+level);
     lostPage=true;
     setTimeout(function() {
       $("body").removeClass("game-over");
     }, 200);
     setTimeout(function() {
-      $("#level").text("Game Over, Press Any Key to Restart"); 
+      $(".level").text("Game Over, Press Any Key to Restart");
       lostPage=false;
     }, 3000);
     level = 0;
